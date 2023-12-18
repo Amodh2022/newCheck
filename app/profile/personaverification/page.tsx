@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic'; // Import dynamic from next/dynamic
 import { callApi } from '../../_actions/personaupdateapi';
 // import { useRouter } from 'next/router'; // Import useRouter from 'next/router'
-// import Persona from 'persona' // Use dynamic import for Persona
+import Persona from 'persona' // Use dynamic import for Persona
 
 const InlineInquiry = () => {
-  // const router = useRouter();
+ 
   const [myuserId, setMyuserId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const InlineInquiry = () => {
   const handleComplete = async ({ inquiryId, status, fields }: any) => {
     try {
       if (status === 'completed') {
-        // await callApi(inquiryId, myuserId);
+        await callApi(inquiryId, myuserId);
         // router.push('/profile');
       }
     } catch (e) {
@@ -34,7 +34,11 @@ const InlineInquiry = () => {
 
   return (
     <div className='h-screen flex justify-center'>
-      
+      <Persona.Inquiry
+        templateId='itmpl_oFwr5vDFxPnJVnpKmXpgxY5x'
+        environmentId='env_3gPXHtfowwicvW8eh5GdW9PV'
+        onComplete={handleComplete}
+      />
     </div>
   );
 };
