@@ -13,8 +13,9 @@ const PersonaInquiry = dynamic(
  
 const InlineInquiry = () => {
     const [userID, setUserID] = useState('');
- const router=useRouter()
+    var router;
     useEffect(() => {
+        router=useRouter()
         const storedUserID = localStorage.getItem('userId');
         if (storedUserID) {
             setUserID(storedUserID);
